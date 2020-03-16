@@ -1,7 +1,9 @@
 #include <iostream>
-#include <iostream>
+
+#include "NotaStudent.h"
 #include "RepositoryArray.h"
 using namespace std;
+
 void add_ui(RepositoryArray& repo)
 {
 	char nume[30];
@@ -25,11 +27,11 @@ void afisare_ui(RepositoryArray& repo)
 	cout << "Elementele listei sunt: ";
 	for(int i=0;i<repo.size();i++)
 	{
-		cout << repo.getAll[i] << " ";
+		cout << repo.getAll()[i] << " ";
 	}
 	cout << endl;
 }
-char menu()
+void menu()
 {
 	cout << "Introduceti 1 pentru adaugare examen! ";
 	cout << endl;
@@ -50,8 +52,9 @@ int main()
 		if (op == 2)
 			afisare_ui(repo);
 		if (op == 3)
-			{cout << "Iesire"; break;
+		{
+			cout << "Iesire"; break;
+		}
 	}
-}
-	return 0;
+
 }

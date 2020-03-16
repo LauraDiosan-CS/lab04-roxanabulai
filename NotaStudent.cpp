@@ -73,3 +73,9 @@ NotaStudent ::~NotaStudent()
 	data = NULL;
 	nota = -1;
 }
+
+ostream& operator<<(ostream& os, const NotaStudent& s)
+{
+	os << s.nume << " " << s.data<<" "<<s.nota;
+	return os;
+}

@@ -1,6 +1,9 @@
 #pragma once
 #ifndef STUD_H
 #define STUD_H
+#include <string>
+#include<ostream>
+using namespace std;
 class NotaStudent
 {
 private:
@@ -9,7 +12,7 @@ private:
 	int nota;
 
 public:
-	NotaStudent(); //construtcor
+	NotaStudent(); //constructor
 	NotaStudent(const char*, const char*, int); //constructor
 	NotaStudent(const NotaStudent&); //constructor
 
@@ -24,6 +27,7 @@ public:
 	NotaStudent& operator=(const NotaStudent&);
 	bool operator==(const NotaStudent&);
 	~NotaStudent(); //destructor
+	friend ostream& operator<<(ostream& os, const NotaStudent& s);
 
 };
 #endif
