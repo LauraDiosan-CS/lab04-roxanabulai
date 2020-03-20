@@ -7,43 +7,46 @@ using namespace std;
 void add_ui(RepositoryArray& repo)
 {
 	char nume[30];
+	cout << endl;
 	cout << "Introduceti numele: ";
 	cin >> nume;
-	cout << endl;
+	
 	char data[30];
-	cout << "Introduceti data; ";
+	cout << "Introduceti data: ";
 	cin >> data;
-	cout << endl;
+	
 	int nota;
 	cout << "Introduceti nota: ";
 	cin >> nota;
-	cout << endl;
+	
 	NotaStudent NotaStudent(nume, data, nota);
 	repo.addElem(NotaStudent);
 }
 
 void afisare_ui(RepositoryArray& repo)
 {
+	cout << endl;
 	cout << "Elementele listei sunt: ";
 	for(int i=0;i<repo.size();i++)
 	{
 		cout << repo.getAll()[i] << " ";
 	}
-	cout << endl;
+	
 }
 void menu()
 {
-	cout << "Introduceti 1 pentru adaugare examen! ";
+	cout << "1.Introduceti 1 pentru adaugare examen! ";
 	cout << endl;
-	cout << "Introduceti 2 pentru afisare examen! ";
+	cout << "2.Introduceti 2 pentru afisare examen! ";
 	cout << endl;
-	cout << "Introduceti 3 pentru iesire! ";
+	cout << "3.Introduceti 3 pentru iesire! ";
 	cout << endl;
 }
 int main()
 {
 	int op;
 	RepositoryArray repo;
+	menu();
 	while (cin >> op)
 	{
 		menu();

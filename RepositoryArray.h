@@ -11,10 +11,6 @@ public:
 	void addElem(NotaStudent);
 	NotaStudent* getAll(); //returneaza un vector de studenti
 	int size();
-	//int findElem(NotaStudent); //returneaza pozitia
-	//void delElem(NotaStudent);
-	//void updateElem(NotaStudent, char*, int);
-	//NotaStudent getItemFromPos(int);
 	~RepositoryArray();
 };
 #endif
