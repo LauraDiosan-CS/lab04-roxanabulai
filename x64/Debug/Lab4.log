@@ -1,5 +1,5 @@
-﻿  Tests.cpp
+﻿  NotaStudent.cpp
+  Tests.cpp
   main.cpp
-C:\Users\ROXANA\Desktop\oop\main.cpp(5,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   Generating Code...
   Lab4.vcxproj -> C:\Users\ROXANA\Desktop\oop\x64\Debug\Lab4.exe

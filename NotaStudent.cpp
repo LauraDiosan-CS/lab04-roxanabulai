@@ -50,6 +50,8 @@ void NotaStudent::setNota(int v)
 	this->nota = v;
 }
 
+
+
 NotaStudent& NotaStudent::operator=(const NotaStudent& s)
 {
 	if (this == &s)
