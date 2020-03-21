@@ -2,6 +2,7 @@
 
 #include "NotaStudent.h"
 #include "RepositoryArray.h"
+#include "Tests.h";
 using namespace std;
 
 void add_ui(RepositoryArray& repo)
@@ -44,16 +45,25 @@ void menu()
 }
 int main()
 {
+	testEntity();
+
 	int op;
 	RepositoryArray repo;
 	menu();
+	cout << "op=";
 	while (cin >> op)
 	{
 		menu();
 		if (op == 1)
+		{
 			add_ui(repo);
+			cout << endl; cout << "op=";
+		}
 		if (op == 2)
+		{
 			afisare_ui(repo);
+			cout << endl; cout << "op=";
+		}
 		if (op == 3)
 		{
 			cout << "Iesire"; break;

@@ -22,10 +22,12 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="NotaStudent.cpp" />
     <ClCompile Include="RepositoryArray.cpp" />
+    <ClCompile Include="Tests.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="NotaStudent.h" />
     <ClInclude Include="RepositoryArray.h" />
+    <ClInclude Include="Tests.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
