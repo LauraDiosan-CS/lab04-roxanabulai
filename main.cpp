@@ -1,151 +1,110 @@
+//#include "TestRepositoryFile.h"
+//#include "TestService.h"
+#include "UI.h"
 #include <iostream>
-
-#include "NotaStudent.h"
-#include "RepositoryArray.h"
-
+#include <string>
+#include <Windows.h>
+#include "Examen.h"
+#include "TestsRepositoryArray.h"
+#include "TestsService.h"
 using namespace std;
 
-void add_ui(RepositoryArray& repo)
+/*void ui_undo(Examen lista[20][20], int pas)
 {
-	char nume[30];
-	cout << endl;
-	cout << "Introduceti numele: ";
-	cin >> nume;
-	
-	char data[30];
-	cout << "Introduceti data: ";
-	cin >> data;
-	
-	int nota;
-	cout << "Introduceti nota: ";
-	cin >> nota;
-	
-	NotaStudent NotaStudent(nume, data, nota);
-	repo.addElem(NotaStudent);
+	for (int i = 1; i < pas; i++)
+		dim=lista[i].
 }
-void delete_ui(RepositoryArray& repo, NotaStudent s)
-{
-	
-	
-	repo.deleteElem(s);
-}
+*/
 
-void update_ui(RepositoryArray& repo, NotaStudent s, char* numee, char* dataa, int notaa)
+void showUI(UI& ui, Service& serv)
 {
 	
-	repo.updateElem(s, numee, dataa, notaa);
-}
-void afisare_ui(RepositoryArray& repo)
-{
-	cout << endl;
-	cout << "Elementele listei sunt: ";
-	cout << endl;
-	for(int i=0;i<repo.size();i++)
-	{
-		cout << repo.getAll()[i] << " ";
+	bool gata = false;
+	Examen lista[20][20];
+	while (!gata) {
+		HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+		SetConsoleTextAttribute(h, FOREGROUND_BLUE);
 		cout << endl;
-	}
-	
-}
-void menu()
-{
-	cout << "1.Introduceti 1 pentru adaugare examen! ";
-	cout << endl;
-	cout << "2.Introduceti 2 pentru afisare examen! ";
-	cout << endl;
-	cout << "3.Introduceti 3 pentru stergere examen! ";
-	cout << endl;
-	cout << "4.Introduceti 4 pentru actualizarea unui examen!";
-	cout << endl;
-	cout << "5.Introduceti 5 pentru iesire!";
-	cout << endl;
-}
-int main()
-{
-	
-
-	char nume[10];
-	char data[10];
-	int nota;
-	int op;
-	char numee[10];
-	char dataa[10];
-	int notaa;
-	RepositoryArray repo; 
-	menu();
-	cout << "op=";
-	while (cin >> op)
-	{
-		
-		if (op == 1)
-		{
-			add_ui(repo);
-			cout << "Examen adaugat!";
-			cout << endl;
-			menu();
-			cout << "op=";
-		}
-		if (op == 2)
-		{
-			afisare_ui(repo);
-			cout << endl;
-			menu(); 
-			cout << "op=";
-		}
-		if (op == 3)
-		{
-			cout << "Introduceti numele studentului ptr care se sterge examenul: ";
+		cout << "OPTIUNI: " << endl;
+		cout << "	1. Adauga examen! " << endl;
+		cout << "	2. Update examen! " << endl;
+		cout << "	3. Sterge examen! " << endl;
+		cout << "	4. Afiseaza toate examenele! " << endl;
+		cout << "	5. Afiseaza toate examenele cu nota mai mare decat o nota data! " << endl;
+		cout << "	6. Adauga un bonus de un punct pentru examenele sustinute de un student dat! " << endl;
+		cout << "	7. UNDO " << endl;
+		cout << "	0. EXIT!" << endl;
+		cout << "Introduceti optiunea (prin numarul ei): " << endl;
+		SetConsoleTextAttribute(h, FOREGROUND_INTENSITY);
+		int opt;
+		int pas;
+		pas = 0;
+		cin >> opt;
+		switch (opt) {
+		case 1: {ui.add_UI_Examen(serv);
+			//pas++; 
+			//for (int i = 0; i < serv.get_Size(); i++)
+			//	lista[pas][i] = serv.get_All()[i]; 
+			break; }
+		case 2: {char* nume = new char[10];
+			char* data = new char[10];
+			int nota;
+			cout << "Dati numele actualizat: ";
 			cin >> nume;
-			cout << endl;
-			cout << "Introduceti data examenului de sters: ";
+			cout << "Dati data actualizata: ";
 			cin >> data;
-			cout << endl;
-			cout << "Introduceti nota examenului de sters: ";
+			cout << "Dati nota actualizata: ";
 			cin >> nota;
-			cout << endl;
-			NotaStudent s(nume, data, nota);
-			delete_ui(repo,s);
-			cout << "Examen sters!";
-			cout << endl;
-			menu(); 
-			cout << "op=";
-
-		}
-		if (op == 4)
-
-		{
-			cout << "Introduceti numele studentului care va fi actualizat: ";
+			ui.update_UI_Examen(serv, nume, data, nota);
+			//pas++;
+			//for (int i = 0; i < serv.get_Size(); i++)
+			//	lista[pas][i] = serv.get_All()[i];
+			break; }
+		case 3: {ui.delete_UI_Examen(serv); 
+			//pas++;
+			//for (int i = 0; i < serv.get_Size(); i++)
+			//		lista[pas][i] = serv.get_All()[i]; 
+			break; }
+		case 4: {ui.showAll(serv); break; }
+		case 5: {int limit;
+			cout << "Nota: ";
+			cin >> limit;
+			ui.showAll_UI_NotaMaiMare(serv, limit);
+			//pas++; 
+			//for (int i = 0; i < serv.get_Size(); i++)
+			//	lista[pas][i] = serv.get_All()[i];
+			break; }
+		case 6: {char* nume = new char[10];
+			cout << "Nume student: ";
 			cin >> nume;
-			cout << endl;
-			cout << "Introduceti data care va fi actualizata: ";
-			cin >> data;
-			cout << endl;
-			cout << "Introduceti nota care va fi actualizata: ";
-			cin >> nota;
-			cout << endl;
-			cout << "Introduceti numele actualizat: ";
-			cin >> numee;
-			cout << endl;
-			cout << "Introduceti data actualizata: ";
-			cin >> dataa;
-			cout << endl;
-			cout << "Introduceti nota actualizata: ";
-			cin >> notaa;
-			cout << endl;
-			NotaStudent s(nume, data, nota);
-			update_ui(repo,s, numee, dataa, notaa);
-			cout << "Examen actualizat!";
-			cout << endl;
-			menu(); 
-			cout << "op=";
-			
+			ui.add_UI_bonus(serv, nume); 
+			//for (int i = 0; i < serv.get_Size(); i++)
+			//	lista[pas][i] = serv.get_All()[i];
+			break; }
+		//case 7: { ui_undo(lista, pas);pas--;  break; }
+		case 0: {gata = true; cout << "LA REVEDERE!" << endl; }
 		}
-		if (op == 5)
-		{
-			cout << "Iesire! ";
-			return 0;
-		}
-	}
-		
 
+	}
+}
+int main() {
+	cout << "start..." << endl;
+	//teste repo
+	testaddElem();
+	testupdateElem();
+	testdeleteElem();
+	//teste serv
+	testaddElemService();
+	testupdateElemService();
+	testdeleteElemService();
+	testNotaMaiMare();
+	testBonus();
+	
+	
+	Service serv;
+	UI ui;
+	showUI(ui,serv);
+	
+
+	cout << "succes";
 }

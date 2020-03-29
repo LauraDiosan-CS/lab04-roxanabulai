@@ -1,19 +1,17 @@
 #pragma once
-#ifndef REPO_H
-#define REPO_H
-#include "NotaStudent.h"
+#include "Examen.h"
+
 class RepositoryArray {
 private:
-	NotaStudent elem[30];
+	Examen elem[30];
 	int dim;
 public:
 	RepositoryArray();
-	int findElem(NotaStudent); //returneaza pozitia elem dupa nume
-	void addElem(NotaStudent);
-	void deleteElem(NotaStudent);
-	void updateElem(NotaStudent,char*,char*,int);
-	NotaStudent* getAll(); //returneaza un vector de studenti
+	int findElem(Examen); //returneaza pozitia elem dupa nume
+	void addElem(Examen);
+	int deleteElem(Examen);
+	void updateElem(Examen, char*, char*, int);
+	Examen* getAll(); //returneaza un vector de studenti
 	int size();
 	~RepositoryArray();
 };
-#endif

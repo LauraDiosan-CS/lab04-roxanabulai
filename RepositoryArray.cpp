@@ -1,36 +1,41 @@
 #include "RepositoryArray.h"
-#include "NotaStudent.h"
+#include "Examen.h"
 
 RepositoryArray::RepositoryArray() { dim = 0; }
 
-void RepositoryArray::addElem(NotaStudent s)
+void RepositoryArray::addElem(Examen s)
 {
 	elem[dim++] = s;
 }
 
-void RepositoryArray::deleteElem(NotaStudent s)
+int RepositoryArray::deleteElem(Examen s)
 {
 	int i = findElem(s);
 	if (i != -1)
 	{
 		elem[i] = elem[dim - 1];
 		dim--;
+		return 0;
 	}
+	return -1;
 }
-void RepositoryArray::updateElem(NotaStudent s, char* n, char*d,int nota )
+void RepositoryArray::updateElem(Examen s, char* n, char* d, int nota)
 {
 	int i = findElem(s);
-	elem[i].setNume(n);
-	elem[i].setData(d);
-	elem[i].setNota(nota); 
+	if (i != -1)
+	{
+		elem[i].setNume(n);
+		elem[i].setData(d);
+		elem[i].setNota(nota);
+	}
 }
-int RepositoryArray::findElem(NotaStudent s)
+int RepositoryArray::findElem(Examen s)
 {
 	for (int i = 0; i < dim; i++)
 		if (elem[i] == s) return i;
 	return -1;
 }
-NotaStudent* RepositoryArray::getAll()
+Examen* RepositoryArray::getAll()
 {
 	return elem;
 }
